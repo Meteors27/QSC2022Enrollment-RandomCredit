@@ -12,12 +12,12 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link as RouterLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const theme = createTheme();
 
 export default function SignIn() {
-
+  const history = useHistory();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -25,16 +25,21 @@ export default function SignIn() {
       name: data.get('email'), 
       id: parseInt(data.get('password')),
     };
-    console.log(user)
+    // console.log(user)
     let response = await fetch('http://localhost:9999/login', {
       method: 'POST',
       headers:{'Content-Type': 'application/json;charset=utf-8'},
+      credentials: 'include',
       body: JSON.stringify(user),
     });
 
     if (response.ok) {
-      let result = await response.json();
-      console.log(result.msg);
+      let greeting = await fetch('http://localhost:9999/hello', {
+      method: 'GET',
+      credentials: 'include',
+      });
+      alert(await greeting.text());
+      history.push('/Query',user);
     } else {
       alert("HTTP-Error: " + response.status);
     }

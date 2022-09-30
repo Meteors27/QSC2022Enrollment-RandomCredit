@@ -19,3 +19,5 @@ https://github.com/mui/material-ui/tree/v5.10.6/docs/data/material/getting-start
 Access to fetch at 'http://localhost:9999/login' from origin 'http://localhost:3000' has been blocked by CORS policy: Request header field access-control-allow-origin is not allowed by Access-Control-Allow-Headers in preflight response.
 
 async
+
+https://stackoverflow.com/questions/70751309/export-switch-imported-as-switch-was-not-found-in-react-router-dom
