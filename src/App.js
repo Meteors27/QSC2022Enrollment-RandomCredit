@@ -1,12 +1,18 @@
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+} from "react-router-dom";
+import SignIn from "./SignIn";
+import Query from "./Query";
 
-
-function App() {
-  return (
-    <div className="App">
-      
-      
-    </div>
-  );
+export default function App(){
+  return(
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/"><SignIn /></Route>
+        <Route path="/Query"><Query /></Route>
+      </Switch>
+    </BrowserRouter>
+  )
 }
-
-export default App; //  外部也可以使用

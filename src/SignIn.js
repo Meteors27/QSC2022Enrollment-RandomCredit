@@ -12,11 +12,12 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { Link as RouterLink } from 'react-router-dom';
 
 const theme = createTheme();
 
 export default function SignIn() {
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -75,7 +76,6 @@ export default function SignIn() {
               fullWidth
               name="password"
               label="学号"
-              type="password"
               id="password"
               autoComplete="current-password"
             />
@@ -91,21 +91,10 @@ export default function SignIn() {
             >
               登录
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  忘记密码
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"注册新账户"}
-                </Link>
-              </Grid>
-            </Grid>
+            
           </Box>
         </Box>
-      </Container>
+      </Container>     
     </ThemeProvider>
   );
 }
