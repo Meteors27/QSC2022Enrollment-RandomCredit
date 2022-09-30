@@ -17,13 +17,27 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+    let user = {
+      name: data.get('email'), 
+      id: parseInt(data.get('password')),
+    };
+    console.log(user)
+    let response = await fetch('http://localhost:9999/login', {
+      method: 'POST',
+      headers:{'Content-Type': 'application/json;charset=utf-8'},
+      body: JSON.stringify(user),
     });
+
+    if (response.ok) {
+      let result = await response.json();
+      console.log(result.msg);
+    } else {
+      alert("HTTP-Error: " + response.status);
+    }
+
   };
 
   return (
@@ -50,7 +64,7 @@ export default function SignIn() {
               required
               fullWidth
               id="email"
-              label="邮箱"
+              label="姓名"
               name="email"
               autoComplete="email"
               autoFocus
@@ -60,7 +74,7 @@ export default function SignIn() {
               required
               fullWidth
               name="password"
-              label="密码"
+              label="学号"
               type="password"
               id="password"
               autoComplete="current-password"

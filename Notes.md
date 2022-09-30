@@ -15,3 +15,7 @@ https://github.com/mui/material-ui/tree/v5.10.6/docs/data/material/getting-start
 3. 显示后端抓取的数据
 4. 弹窗
 5. cookie保持
+
+Access to fetch at 'http://localhost:9999/login' from origin 'http://localhost:3000' has been blocked by CORS policy: Request header field access-control-allow-origin is not allowed by Access-Control-Allow-Headers in preflight response.
+
+async
