@@ -35,10 +35,11 @@ export default function SignIn() {
 
     if (response.ok) {
       let greeting = await fetch('http://localhost:9999/hello', {
-      method: 'GET',
-      credentials: 'include',
+        method: 'GET',
+        credentials: 'include',
       });
-      alert(await greeting.text());
+      const hello = await greeting.json()
+      alert(hello.msg);
       history.push('/Query',user);
     } else {
       alert("HTTP-Error: " + response.status);
